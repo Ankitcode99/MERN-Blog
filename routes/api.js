@@ -16,9 +16,7 @@ router.get('/',(req,res)=>{
 })
 
 router.post('/save',(req,res)=>{
-    
     const userInput = req.body;
-    
     const newPost = new blogPost(userInput);
     newPost.save((err)=>{
         if(err)
@@ -35,8 +33,26 @@ router.post('/save',(req,res)=>{
             });
         }
     })
+})
 
-    
+router.delete('/:id',(req,res)=>{
+    const postId = req.params.postId;
+
+    blogPost.findByIdAndDelete(req.params.id,(err)=>{
+        if(err)
+        {
+            console.log(err);
+            res.status(404).json({
+                msg : 'Unable to delete'
+            })
+            
+        }
+        else{
+            res.json({
+                msg:'Blog deleted successfully!'
+            })
+        }
+    })
 })
 
 module.exports = router

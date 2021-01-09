@@ -72,3 +72,34 @@
   margin-bottom: 15px;
   border-radius: 30px;
 }
+
+.blogButton, .blogTitle{
+  display: inline-flex;
+}
+
+.blogButton{
+  float: right;
+  margin-right: 15px;
+  margin-top: 25px;
+  border-radius: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  font-family: cursive;
+  background-color: white; 
+  color: red; 
+  border: 2px solid red;
+}
+
+.blogButton:hover{
+  background-color: red;
+  color: white;
+}
+
+.goodbye{
+  text-align: center;
+  font-family: consolas;
+  font-size: 16px;
+}

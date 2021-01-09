@@ -72,10 +72,25 @@ class App extends React.Component
     })
   }
 
+  deleteBlog = (event) =>{
+    event.preventDefault();
+    const target = event.target
+    const taskId = target.id
+    axios.delete(`/api/${taskId}`)
+    .then(()=>{
+      console.log('Task deleted successfully!')
+      this.getBlogPosts()
+    })
+    .catch(()=>{
+      alert('Error deleting blog post!')
+    })
+    // return;
+  }
+
   displayBlogPosts = (posts) =>{
     if(!posts.length)
     {
-      return null;
+      return <h1>Alas! No blog available... Why don't you write one! &#128521; </h1>;
     }
 
     posts.reverse()
@@ -83,7 +98,11 @@ class App extends React.Component
     console.log(posts.length," Posts available")
     return posts.map((curr,index)=>(
       <div key={index} className = "blog-post__display">
-        <h2>{curr.title}</h2>
+        <span className = 'postHead'>
+        <h2 className='blogTitle'>{curr.title}</h2>
+        
+        <button className = 'button blogButton' id = {curr._id} onClick={this.deleteBlog}> DELETE </button>
+        </span>
         <hr></hr>
         <p>{curr.body}</p>
         <h4>Authored By: {curr.author}</h4>
@@ -144,7 +163,12 @@ class App extends React.Component
         <div className = "blog-posts">
           {this.displayBlogPosts(this.state.posts)}
         </div>
+
+        <br></br>
+        <br></br>
         
+        <p className='goodbye'>Made with &hearts; by  <a href='https://github.com/Ankitcode99' target='_blank'>AnkitCode99</a></p>
+
       </div>
     )
   }
