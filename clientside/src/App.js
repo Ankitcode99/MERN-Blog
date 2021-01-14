@@ -116,6 +116,9 @@ class App extends React.Component
 
     return(
       <div className='app'>
+      <div className = 'site-head'>
+        <h1 className = 'page-header'>CP - ZONE</h1>
+      </div>
       <h2>Start writing your new blog here....</h2>
       <form onSubmit={this.submit} className='blog-form'>
           <div className="form-input">

@@ -103,3 +103,13 @@
   font-family: consolas;
   font-size: 16px;
 }
+
+.site-head{
+  background-color: black;
+}
+
+.page-header{
+  text-align: left;
+  margin: 18px;
+  padding: 10px;
+}
