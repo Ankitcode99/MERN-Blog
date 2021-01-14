@@ -35,6 +35,24 @@ router.post('/save',(req,res)=>{
     })
 })
 
+// var jsonParser = bodyParser.json()
+
+router.put('/:id',(req,res)=>{
+    const userInput = req.body;
+    console.log(userInput);
+    blogPost.findOneAndUpdate(req.params.id,{$set:{ title : userInput.title, 
+                                                    body : userInput.body, 
+                                                    author : userInput.author }},{ returnOriginal : false }, (err,result)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else{
+            res.status(200).json(result);
+        }
+    });
+})
+
 router.delete('/:id',(req,res)=>{
     const postId = req.params.postId;
 
