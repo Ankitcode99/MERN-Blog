@@ -4,6 +4,9 @@
   "description": "Simple MERN Blog app to learn REST-API functionalities",
   "main": "server.js",
   "scripts": {
+    "build":"cd clientside && npm run build",
+    "install-client":"cd clientside && npm install",
+    "heroku-postbuild":"npm run install-client && npm run build",
     "start":"nodemon server.js",
     "client":"cd clientside && npm start",
     "dev": "concurrently -n 'server,client' -c 'yellow,blue' \"npm start\" \"npm run client\""

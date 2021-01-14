@@ -7,12 +7,11 @@ const routes = require('./routes/api')
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const globalURI = 'mongodb+srv://CoderHere:AnkitCode99@mern-blog-db.x0ltf.mongodb.net/mern-blog-db?retryWrites=true&w=majority';
 const localURI = 'mongodb://localhost/mern_blog'
 
 
 // connect DB
-mongoose.connect(globalURI || localURI,{
+mongoose.connect(process.env.MONGODB_URI || localURI,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 });
@@ -29,5 +28,11 @@ app.use(express.urlencoded({ extended: false })); // to render urls
 app.use(morgan('tiny'));
 
 app.use('/api',routes)
+
+if(process.env.NODE_ENV==='production')
+{
+    app.use(express.static('clientside/build'))
+}
+
 
 app.listen(PORT, console.log(`Server on at Port ${PORT}`));
