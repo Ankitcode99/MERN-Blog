@@ -1,5 +1,6 @@
 .app{
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
   font-family:cursive;
   background-color: #dddbdb;
 }
