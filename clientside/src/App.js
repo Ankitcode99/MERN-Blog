@@ -90,7 +90,7 @@ class App extends React.Component
   displayBlogPosts = (posts) =>{
     if(!posts.length)
     {
-      return <h1>Alas! No blog available... Why don't you write one! &#128521; </h1>;
+      return <h1>You are all caught up! &#128521; </h1>;
     }
 
     posts.reverse()
@@ -105,7 +105,7 @@ class App extends React.Component
         </span>
         <hr></hr>
         <p>{curr.body}</p>
-        <h4>Authored By: {curr.author}</h4>
+        <h4>Relevance: {curr.author}</h4>
       </div>
     ));
   }
@@ -117,9 +117,9 @@ class App extends React.Component
     return(
       <div className='app'>
       <div className = 'site-head'>
-        <h1 className = 'page-header'>CP - ZONE</h1>
+        <h1 className = 'page-header'>Note-Down</h1>
       </div>
-      <h2>Start writing your new blog here....</h2>
+      <h2>Add your todo here....</h2>
       <form onSubmit={this.submit} className='blog-form'>
           <div className="form-input">
             <input
@@ -128,7 +128,7 @@ class App extends React.Component
               className = 'form-text'
               padding = "10px"
               required = "true"
-              placeholder = "Title of your new blog"
+              placeholder = "Title "
               value = {this.state.title}
               onChange = {this.handleChange}
             />
@@ -140,7 +140,7 @@ class App extends React.Component
               required = "true"
               className = 'form-content'
               onChange = {this.handleChange}
-              placeholder = "Start writing here..."
+              placeholder = "Describe your todo"
             />
           </div>
           <div className = "form-input">
@@ -149,19 +149,19 @@ class App extends React.Component
               className = 'form-text'
               name = "author"
               required = "true"
-              placeholder = "Your Name"
+              placeholder = "Relevance: Important, Moderate etc."
               value = {this.state.author}
               onChange = {this.handleChange}
             />
           </div>
           <button className = 'button submitButton'>
-            Post Blog
+            Note it!
           </button>
         </form>
 
         <hr></hr>
 
-        <h1>Past Blogs</h1>
+        <h1>Added Todos</h1>
 
         <div className = "blog-posts">
           {this.displayBlogPosts(this.state.posts)}
