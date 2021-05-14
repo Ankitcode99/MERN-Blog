@@ -4,15 +4,17 @@ const router = express.Router()
 const bodyParser = require('body-parser')
 
 
-router.get('/',(req,res)=>{
-    
-    blogPost.find({ })
-    .then((data)=>{
+router.get('/',async (req,res)=>{
+    try{
+    let data= await blogPost.find({ })
+    if(data)
+    {
         res.json(data)
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
+    }
+    }
+    catch(err){
+        console.error(err
+    }
 })
 
 router.post('/save',(req,res)=>{
